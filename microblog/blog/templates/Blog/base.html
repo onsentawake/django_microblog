@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- レスポンシブデザイン用 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Djangoブログ</title>
+	<!-- 外部のCSSライブラリBulmaへのリンク -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
+
 <body>
-	<nav class="navbar is-danger">
-		<div class="navbar-brand">
+	<!-- ナビゲーションバー -->
+	<nav class="navbar is-info">
+		<div class="c-brand">
 			<a href="/" class="navbar-item"></a>
 			<strong>プログラミングチュートリアル</strong>
 		</div>
 	</nav>
 
+	<!-- メインコンテンツのセクション -->
 	<section class="section">
 		<div class="container">
+			<!-- 各HTMLファイルを動的に呼び出し -->
 			{% block content %} {% endblock %}
 		</div>
 	</section>
 </body>
+
 </html>

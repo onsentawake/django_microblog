@@ -19,6 +19,7 @@ from django.urls import path
 from blog.views import frontpage, post_detail
 
 urlpatterns = [
+    # パスにadminと入力された場合は管理ページに飛ぶようにルーティング
 	path('admin/', admin.site.urls),
 	# ↓追加 何も指定しないときはfrontpageファンクションを実行する
 	path("", frontpage),

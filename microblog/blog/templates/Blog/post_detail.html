@@ -1,5 +1,7 @@
+{# "blog/base.html" を継承 #}
 {% extends "blog/base.html" %}
 
+{# ベーステンプレートの "content" ブロックを上書きします。 #}
 {% block content %}
 <h1 class="title">{{ post.title }}</h1>
 <small>Posted at {{post.posted_date}}</small>
@@ -7,14 +9,15 @@
 <p>{{post.body}}</p>
 <hr>
 
-<!-- コメントされたものの表示 -->
+{# コメントの表示 #}
 <h2 class="subtitle">コメント</h2>
-
+{# すべてのコメントをループ #}
 {% for comment in comments.all %}
 <article class="media">
 	<div class="media-content">
 		<div class="content">
 			<p>
+				{# コメントの各カラムを呼び出し #}
 				<strong>
 					{{comment.name}}<br>
 					<small>{{comment.posted_date}}</small><br>
@@ -24,22 +27,28 @@
 		</div>
 	</div>
 </article>
+{# コメントがない場合の表示 #}
 {% empty %}
 <div class="notification">
 	<p>こめんとがない
 	</p>
 </div>
+{# コメントのループ終了 #}
 {% endfor %}
 
-<!-- コメント投稿エリア -->
+{# コメント投稿エリア #}
 <h2>コメント</h2>
 <form action="." method="post">
+	{# CSRFトークンを追加(セキュリティ) #}
 	{% csrf_token %}
+	{# フォームフィールドを表示ビュー(コントローラ)から渡される #}
 	{{form.as_p}}
 	<div class="field">
 		<div class="control">
+			{# "送信" ボタンを追加します。 #}
 			<button class="button is-danger">送信</button>
 		</div>
 	</div>
 </form>
+{# "content" ブロックの終了 #}
 {% endblock %}

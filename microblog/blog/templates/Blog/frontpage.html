@@ -1,11 +1,16 @@
+<!-- ベースとなる "blog/base.html" テンプレートを拡張。 -->
 {% extends "blog/base.html" %}
 
+<!-- ベーステンプレートの "content" ブロックを上書。 -->
 {% block content %}
+{# すべての投稿をループ #}
 {% for post in posts %}
 <div class="post block">
+	{# タイトル、投稿日、イントロを表示 #}
 	<h2 class="subtitle">{{ post.title }}</h2>
 	<small>Posted at {{post.posted_date}}</small>
 	<p>{{post.intro}}</p>
+	{# "もっと読む" のリンクを生成 #}
 	<a href="{% url 'post_detail' post.slug %}">もっと読む
 	</a>
 	<hr>
